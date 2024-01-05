@@ -679,7 +679,8 @@ There are four types of sensor feedback that can be accommodated:
 * Dual switch sensor that separately trigger under tension and compression (thus definining a neutral range)
 * Proportional feedback sensor that can give a signal from 1.0 (max compression) to -1.0 (max tension) with 0 being neutral
 
-The Belay project by Annex Engineering is a good example of the first type (note that the klipper s/w for this project is not required). It sits somewhere in the bowden path from MMU to extruder and provides a spring loaded "gap" in the PTFE tube.
+The Belay project by Annex Engineering is a good example of the first type. It sits somewhere in the bowden path from MMU to extruder and provides a spring loaded "gap" in the PTFE tube. 
+Note that the klipper software for the Belay project is not required for using the Belay sensor with Happy Hare.
 
 Essentially all of these provide a feedback signal (the first two lacking a neutral space and so are always working) that dynamically changes the `rotation_distance` of the gear (filament driver) stepper. When extruding and the sync feedback sensor reports tension, the `sync_multiplier_low` is used (or a proportion of it) to decrease the `rotaion_distance` and thus increase the speed. This will have the effect of decreasing tension.  When the sync feedback sensor reports compression, the `sync_multiplier_high` is used (or a proportion of it) to increase the `rotation_distance` and thus decrease the speed.  This will have the effect relaxing the compression. When retracting the operation is reversed by switching multipliers.
 
